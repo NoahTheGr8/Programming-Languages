@@ -3,43 +3,17 @@
 class product
 {
 
-    public $name;
-    public $plu;
-    public $directory;
+    public $name = NULL;
+    public $alias = NULL;
+    public $plu = NULL;
+    public $picon = NULL;
 
-    /**
-     * @param $name
-     */
-    public function __construct($name, $plu, $directory)
+    function __construct($name, $alias, $plu, $picon)
     {
         $this->name = $name;
+        $this->alias = $alias;
         $this->plu = $plu;
-        $this->directory = $directory;
+        $this->picon = $picon;
     }
-
-    /**
-     * returns the name of the product
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * returns the plu of the product
-     */
-    public function getPlu()
-    {
-        return $this->plu;
-    }
-
-    /**
-     * returns the directory of the selected icon
-     */
-    public function getDirectory()
-    {
-        return $this->directory;
-    }
-
-
 }
+?>
