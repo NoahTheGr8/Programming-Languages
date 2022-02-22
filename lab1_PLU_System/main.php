@@ -18,51 +18,50 @@
                 Password: <input type='text' name='pw' /><br><br>
                 <input type='submit' name='submit' value='submit' />
             </form>
-    </body
-</html>
+            <!-- Show the list below where each product is an object -->
+            <?php
+            include("product.php");
+            $inventory = array();
 
-<!-- Show the list below where each product is an object -->
-<?php
-    include("product.php");
-    $inventory = array();
+            // Submit user input data for 2D array
+            if ( isset($_POST['submit']) && $_POST['pw'] == 'pw') {
 
-    // Submit user input data for 2D array
-    if ( isset($_POST['submit'])) {
+                $name = $_POST['name'];
+                $alias = $_POST['alias'];
+                $plu = $_POST['plu'];
+                $picon = $_POST['picon']; // THE SELECTED IMAGE HAS TO BE WITHIN SAME DIRECTORY AS THIS PROJECT
 
-        $name = $_POST['name'];
-        $alias = $_POST['alias'];
-        $plu = $_POST['plu'];
-        $picon = $_POST['picon'];
+                //echo gettype($picon) . "$picon <br>";
 
-        //echo gettype($picon) . "$picon <br>";
+                array_push($inventory, new product($name, $alias, $plu,$picon));
 
-        array_push($inventory, new product($name, $alias, $plu,$picon));
-
-        print_r($inventory);
-
-        echo"<br>";
-        echo "<table id='tsa' border='2' id='example' class='table table-striped responsive-utilities table-hover'>
+                //print_r($inventory);
+                //Display all the inventory in a table fashion
+                echo"<br>";
+                echo "<table border='2'>
               <thead>
                 <tr>
                 <th>Name</th>
-                <th>Alias</th>
+                <th style = 'background-color: #009933'>Alias</th>
                 <th>PLU</th>
                 <th>Picture</th>
                 </tr>
               </thead>
               ";
-        foreach ($inventory as $item) {
-            echo '<tr>';
-            echo '<td>' . $item->name . '</td>';
-            echo '<td>' . $item->alias . '</td>';
-            echo '<td>' . $item->plu . '</td>';
-            echo '<td><img alt="product image" height=100 width=100 src=".\/'. $item->picon.'"></td>';
-            echo '</tr>';
-        }
+                foreach ($inventory as $item) {
+                    echo '<tr>';
+                    echo '<td>' . $item->name . '</td>';
+                    echo '<td style = "background-color: #009933">' . $item->alias . '</td>';
+                    echo '<td>' . $item->plu . '</td>';
+                    echo '<td><img alt="product image" height=100 width=100 src=".\/'. $item->picon.'"></td>';
+                    echo '</tr>';
+                }
+            }
+            else{
+                echo "** password was wrong, please try again **";
+            }
 
-    }
+            ?>
+    </body
+</html>
 
-    //Array ( [0] => product Object ( [name] => [plu] => [directory] => ) ) <<<<<<<WITHOUT []
-    //Array ( [0] => Array ( ) [1] => product Object ( [name] => aaa [plu] => 1111 [directory] => ) ) <<<<<<<<WITH []
-
-?>
