@@ -25,6 +25,7 @@
 
             // Submit user input data for 2D array
             if ( isset($_POST['submit']) && $_POST['pw'] == 'pw') {
+                
 
                 $name = $_POST['name'];
                 $alias = $_POST['alias'];
@@ -57,7 +58,7 @@
                     echo '</tr>';
                 }
             }
-            else{
+            if ( !empty($_POST['pw']) && $_POST['pw'] != 'pw'){
                 echo "** password was wrong, please try again **";
             }
 
