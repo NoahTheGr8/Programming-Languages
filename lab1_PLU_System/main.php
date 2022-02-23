@@ -87,7 +87,6 @@ Features:
                 }
 
                 foreach($inventory as $item){
-                    echo "$item->name $name";
                     if($item->name == $name){
                         return True;
                     }
