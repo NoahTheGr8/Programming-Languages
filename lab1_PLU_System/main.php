@@ -48,15 +48,15 @@ Features:
             <h3>Enter a product and it's PLU to be stored in the system</h3>
 
             <form method='POST' action='main.php'>
-                Product Name: <input type='text' name='name' placeholder="4558"/><br><br>
+                Product Name: <input type='text' required="required" name='name' placeholder="4558"/><br><br>
 
                 Product Alias: <input type='text' name='alias' placeholder="nopales"/><br><br>
 
-                Product PLU: <input type='text' name='plu' placeholder="price look up"/><br><br>
+                Product PLU: <input type='text' name='plu' required="required" placeholder="price look up"/><br><br>
 
-                Product Icon: <input type='file' name='picon' /><br><br>
+                Product Icon: <input type='file' name='picon'/><br><br>
 
-                Password: <input type='text' name='pw'  placeholder="pssst it's 'pw' "><br><br>
+                Password: <input type='text' name='pw' required="required"  placeholder="pssst it's 'pw' "><br><br>
                 <input type='submit' name='submit' value='Submit' />
 
             </form>
