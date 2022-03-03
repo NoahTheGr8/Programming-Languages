@@ -1,14 +1,14 @@
 
 --------------------------------- innocuous-sr ---------------------------------
 #!/bin/bash
-awk '{print $2}' innocuous-sr.txt | sort -t- -nk1 > codes.txt
-awk -F "-" '{print $1, $2}' codes.txt | awk '{if($1%2==1){print $1,$2;}}' | awk '{print $1 ,$2 + 3}' | awk 'BEGIN{for(n=0;n<256;n++)chr[n]=sprintf("%c",n)}{print chr[$2]}' > semiciphered.txt
-awk 'FNR==NR {a[$1] = $2; next} END {for (key in a) { print key, a[key] , $2 } }' codebook-sr.txt semiciphered.txt
-awk 'FNR==NR {a[$1] = $2; next} {print a[$1]}' codebook-sr.txt semiciphered.txt | awk 'NR{printf "%s ",$0;next;}1'
+awk '{print $2}' innocuous-sr.txt | sort -t- -nk1 > codes_sr.txt
+awk -F "-" '{print $1, $2}' codes.txt | awk '{if($1%2==1){print $1,$2;}}' | awk '{print $1 ,$2 + 3}' | awk 'BEGIN{for(n=0;n<256;n++)chr[n]=sprintf("%c",n)}{print chr[$2]}' > semideciphered_sr.txt
+#awk 'FNR==NR {a[$1] = $2; next} END {for (key in a) { print key, a[key] , $2 } }' codebook-sr.txt semideciphered.txt
+awk 'FNR==NR {a[$1] = $2; next} {print a[$1]}' codebook-sr.txt semideciphered_sr.txt | awk 'NR{printf "%s ",$0;next;}1'
 
 --------------------------------- innocuous-tmbg ---------------------------------
 #!/bin/bash
 awk '{print $2}' innocuous-tmbg.txt | sort -t- -nk1 > codes_tmbg.txt
-awk -F "-" '{print $1, $2}' codes_tmbg.txt | awk '{if($1%2==1){print $1,$2;}}' | awk '{print $1 ,$2 + 3}' | awk 'BEGIN{for(n=0;n<256;n++)chr[n]=sprintf("%c",n)}{print chr[$2]}' > semiciphered_tmbg.txt
-awk 'FNR==NR {a[$1] = $2; next} END {for (key in a) { print key, a[key] , $2 } }' codebook-tmbg.txt semiciphered_tmbg.txt
-awk 'FNR==NR {a[$1] = $2; next} {print a[$1]}' codebook-tmbg.txt semiciphered_tmbg.txt | awk 'NR{printf "%s ",$0;next;}1'
+awk -F "-" '{print $1, $2}' codes_tmbg.txt | awk '{if($1%2==1){print $1,$2;}}' | awk '{print $1 ,$2 + 3}' | awk 'BEGIN{for(n=0;n<256;n++)chr[n]=sprintf("%c",n)}{print chr[$2]}' > semideciphered_tmbg.txt
+#awk 'FNR==NR {a[$1] = $2; next} END {for (key in a) { print key, a[key] , $2 } }' codebook-tmbg.txt semiciphered_tmbg.txt
+awk 'FNR==NR {a[$1] = $2; next} {print a[$1]}' codebook-tmbg.txt semdeiciphered_tmbg.txt | awk 'NR{printf "%s ",$0;next;}1'
