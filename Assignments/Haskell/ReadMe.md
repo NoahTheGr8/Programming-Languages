@@ -9,5 +9,5 @@ ghc <file>.hs
 ```
 4. Run the executable
 ```
-<file>.exe
+./<file>
 ```
