@@ -156,17 +156,19 @@ while true
   puts ">> You added O disk at col #{col} <<"
   testboard5.print
 
+  if testboard5.hasWon?(:O)
+    puts "======= You win ======="
+    break
+  end
+
   robot_move = rand(0..6)
   testboard5.addDisc(:R,robot_move)
   puts ">> Robot added R disk at col #{robot_move} <<"
   testboard5.print
 
   if testboard5.hasWon?(:R)
-    puts "Player R has Won"
+    puts "======= You lose ======="
     break
   end
-  if testboard5.hasWon?(:O)
-    puts "Player O has Won"
-    break
-  end
+
 end
