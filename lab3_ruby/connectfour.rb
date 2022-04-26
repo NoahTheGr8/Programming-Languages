@@ -94,8 +94,10 @@ end
 def testResult(testID, move, targets, intent)
   if targets.member?(move)
     puts("testResult: passed test #{testID}")
+    return true
   else
     puts("testResult: failed test #{testID}: \n moved to #{move}, which wasn't one of #{targets}; \n failed: #{intent}")
+    return false
   end
 end
 
@@ -141,3 +143,24 @@ testboard3.print
 # testboard4.addDiscs(:O, [1,1,2,2,3])
 # testResult(:preventHoriz, robotMove(:R, testboard4), [4], 'robot should avoid giving win')
 # testboard4.print
+
+
+testboard5 = Board.new
+puts "--------------Connect Four --------------"
+puts "You are player O"
+testboard5.print
+while true
+  puts "Enter column to enter disc: "
+  col = gets #this is the desired column that the user wants to enter disc
+  testboard5.addDisc(:O,col.to_i)
+  testboard5.print
+
+  if testboard5.hasWon?(:R)
+    puts "Player R has Won"
+    break
+  end
+  if testboard5.hasWon?(:O)
+    puts "Player O has Won"
+    break
+  end
+end
