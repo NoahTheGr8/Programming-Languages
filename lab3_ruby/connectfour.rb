@@ -146,13 +146,19 @@ testboard3.print
 
 
 testboard5 = Board.new
-puts "--------------Connect Four --------------"
+puts "\n\n\n###################### Interactive Connect Four ######################"
 puts "You are player O"
 testboard5.print
 while true
-  puts "Enter column to enter disc: "
-  col = gets #this is the desired column that the user wants to enter disc
-  testboard5.addDisc(:O,col.to_i)
+  print "** Enter column to enter disc (1-7): "
+  col = gets.chomp #this is the desired column that the user wants to enter disc
+  testboard5.addDisc(:O,col.to_i - 1)
+  puts ">> You added O disk at col #{col} <<"
+  testboard5.print
+
+  robot_move = rand(0..6)
+  testboard5.addDisc(:R,robot_move)
+  puts ">> Robot added R disk at col #{robot_move} <<"
   testboard5.print
 
   if testboard5.hasWon?(:R)
