@@ -70,6 +70,17 @@ class Board
     return (0..3).all?{|step| @board[r+step*dx][c+step*dy] == player}
   end
 
+  #------------------------------------------------------------------
+  def popOut(col)
+    i = 0
+    #board.print
+    #puts "#{board.class}"
+    while @board[i][col] != nil
+      @board[i][col] = @board[i+1][col]
+      i+=1
+    end
+  end
+
 end # Board
 #------------------------------------------------------------------
 
@@ -89,6 +100,10 @@ def testResult(testID, move, targets, intent)
 end
 
 
+
+
+
+
 #------------------------------------------------------------------
 # test some robot-player behaviors
 testboard1 = Board.new
@@ -101,17 +116,28 @@ testboard1.addDisc(:O,6)
 testResult(:hwin, robotMove(:R, testboard1),[3], 'robot should take horizontal win')
 testboard1.print
 
-testboard2 = Board.new
-testboard2.addDiscs(:R, [3, 1, 3, 2, 3, 4]);
-testResult(:vwin, robotMove(:R, testboard2), [3], 'robot should take vertical win')
-testboard2.print
+testboard1.popOut(4) #removes the bottom most counter on the 4th column (cols start at 0)
+testboard1.print
+
+
+
+
+# testboard2 = Board.new
+# testboard2.addDiscs(:R, [3, 1, 3, 2, 3, 4]);
+# testResult(:vwin, robotMove(:R, testboard2), [3], 'robot should take vertical win')
+# testboard2.print
+
 
 testboard3 = Board.new
 testboard3.addDiscs(:O, [3, 1, 4, 5, 2, 1, 6, 0, 3, 4, 5, 3, 2, 2, 6 ]);
 testResult(:dwin, robotMove(:R, testboard3), [3], 'robot should take diagonal win')
 testboard3.print
 
-testboard4 = Board.new
-testboard4.addDiscs(:O, [1,1,2,2,3])
-testResult(:preventHoriz, robotMove(:R, testboard4), [4], 'robot should avoid giving win')
-testboard4.print
+testboard3.popOut(2)
+testboard3.print
+
+
+# testboard4 = Board.new
+# testboard4.addDiscs(:O, [1,1,2,2,3])
+# testResult(:preventHoriz, robotMove(:R, testboard4), [4], 'robot should avoid giving win')
+# testboard4.print
