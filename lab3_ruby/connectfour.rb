@@ -40,7 +40,8 @@ class Board
   end
 
   def print
-    puts @board.map {|row| row.map { |e| e || " "}.join("|")}.join("\n")
+    #puts @board.map {|row| row.map { |e| e || " "}.join("|")}.join("\n") # <--------- Original
+    puts @board.map {|row| row.reverse_each.map { |e| e || " "}.join("|")}.join("\n").reverse #my modification
     puts "\n"
   end
 
