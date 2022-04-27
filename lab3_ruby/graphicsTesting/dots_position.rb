@@ -1,8 +1,8 @@
 DOTS = [
   {
     dots: {
-      yellow: [8, 11],
-      red: [16, 24]
+      yellow: [], #this will be the users color
+      red: [] #this will be the robots color
     }
   }
 ]
