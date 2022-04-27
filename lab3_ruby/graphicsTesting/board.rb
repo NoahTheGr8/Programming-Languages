@@ -27,6 +27,7 @@ class Board
       puts "  addDisc(#{player},#{column}): column full already; move forfeit"
     end
     update(firstFreeRow, column, player)
+    return firstFreeRow #Adding this line so that we can print it
   end
 
   def update(row, col, player)
