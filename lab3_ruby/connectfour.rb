@@ -28,7 +28,7 @@ class Board
     if column >= 7 || column < 0
       puts "  addDisc(#{player},#{column}): out of bounds; move forfeit"
     end
-    firstFreeRow =  @board.transpose.slice(column).index(nil)
+    firstFreeRow =  @board.transpose.slice(column).rindex(nil)
     if firstFreeRow == nil
       puts "  addDisc(#{player},#{column}): column full already; move forfeit"
     end
@@ -40,8 +40,8 @@ class Board
   end
 
   def print
-    #puts @board.map {|row| row.map { |e| e || " "}.join("|")}.join("\n") # <--------- Original
-    puts @board.map {|row| row.reverse_each.map { |e| e || " "}.join("|")}.join("\n").reverse #my modification
+    puts @board.map {|row| row.map { |e| e || " "}.join("|")}.join("\n") # <--------- Original
+    #puts @board.map {|row| row.reverse_each.map { |e| e || " "}.join("|")}.join("\n").reverse #my modification
     puts "\n"
   end
 
