@@ -3,12 +3,13 @@ require_relative 'tile'
 
 class Grid < Square
   attr_accessor :tiles, :dots
-  attr_reader :grid_size, :x, :y, :tile_size, :margin
+  attr_reader :grid_size_x, :grid_size_y, :x, :y, :tile_size, :margin
 
   def initialize(params)
     @tiles = []
     @dots = params[:dots]
-    @grid_size = params[:grid_size] ||= 5
+    @grid_size_x = params[:grid_size_x] ||= 6
+    @grid_size_y = params[:grid_size_y] ||= 7
     @x = params[:x] ||= 60
     @y = params[:y] ||= 60
     @tile_size = params[:tile_size] ||= 100
@@ -18,9 +19,9 @@ class Grid < Square
 
   def draw_grid
     y = @y
-    @grid_size.times do
+    @grid_size_x.times do
       x = @x
-      @grid_size.times do
+      @grid_size_y.times do
         @tiles << Tile.new(
           x: x,
   	      y: y,
