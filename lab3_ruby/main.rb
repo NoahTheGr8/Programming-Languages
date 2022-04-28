@@ -23,6 +23,12 @@ testboard1.print
 testboard1.popOut(4) #removes the bottom most counter on the 4th column (cols start at 0)
 puts "Printing after pop out function"
 testboard1.print
+puts "Printing before pop out function"
+testboard1.print
+testboard1.popOut(6) #removes the bottom most counter on the 4th column (cols start at 0)
+puts "Printing after pop out function"
+testboard1.print
+
 
 #---------------------------------------------------------------------------
 
