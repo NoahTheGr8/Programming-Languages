@@ -1,6 +1,7 @@
 require 'ruby2d'
-require_relative 'level'
+require_relative 'grid'
 require_relative 'board'
+require_relative 'dots_position'
 
 def draw_grid(color)
   set( { title: 'Connect Four', background: color , height: 800, width: 800 } )
